@@ -8,7 +8,7 @@
 	if ($_SESSION['is_logged'] === false) {
 ?>
 <form action="register.php" method="POST">
-	<label for="loginName">Login firstName:</label>
+	<label for="loginName">Login:</label>
 	<input type="text" name="loginName"><br>
 	<label for="pass">Password:</label>
 	<input type="password" name="pass"><br>
@@ -48,15 +48,15 @@
 			if ($pass != $passRepeat) {
 				echo 'The password doesn\'t match <br>';
 			}
-			// if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			// 	echo 'Invalid Email <br>';
-			// }  
-			// if (preg_match("/[a-zA-Z]{3,16}/", $firstName)) {
-			// 	echo 'Invalid First Name <br>';
-			// }
-			// if (preg_match("/[a-zA-Z]{3,16}/", $secondName)) {
-			// 	echo 'Invalid Second Name <br>';
-			// }
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				echo 'Invalid Email <br>';
+			}  
+			if (preg_match("/[a-zA-Z]{3,16}/", $firstName)) {
+				echo 'Invalid First Name <br>';
+			}
+			if (preg_match("/[a-zA-Z]{3,16}/", $secondName)) {
+				echo 'Invalid Second Name <br>';
+			}
 
 			//connect to the database
 			//check if loginName and email is already exist in database
@@ -69,7 +69,7 @@
 			$sql = 'SELECT COUNT(*) as cnt FROM users WHERE loginName="'.addslashes($loginName).'"OR email="'.addslashes($email).'"';
 			$res = mysql_query($sql);
 			$row =mysql_fetch_assoc($res);
-			// print_r($row);
+			print_r($row);
 			// if user doesn't exist put info into database
 			if ($row['cnt'] == 0) {
 				mysql_query('INSERT INTO users (loginName,pass,first_name,second_name,
