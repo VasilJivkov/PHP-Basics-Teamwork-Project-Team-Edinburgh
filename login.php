@@ -20,12 +20,12 @@
 		</div>
 		<div class="login-container-main" id="register" style="display: none;">
 			<h3>Sign up</h3>
-			<form>
+			<form action="" method="post">
 				<input type="text" name="username" placeholder="Username" />
 				<input type="email" name="email" placeholder="Email" />
 				<input type="password" name="password" placeholder="Password" />
 				<input type="password" name="repeat-password" placeholder="Repeat password" />
-				<input type="submit" value="Register" />
+				<input type="submit" value="Register" onclick="clearErrors()" />
 			</form>
 		</div>
 		<div id="changeForm">
@@ -33,6 +33,10 @@
 			<a href="#" style="display: none">Login</a>
 		</div>
 	</div>
+
+    <?php
+        include './register.php';
+    ?>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#changeForm a').click(function() {
@@ -41,6 +45,11 @@
 				$('#changeForm a').toggle();
 			});
 		});
+
+        function clearErrors() {
+            var errors = document.getElementById('error');
+            errors.innerText = "";
+        }
 	</script>
 </body>
 </html>
