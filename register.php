@@ -1,7 +1,5 @@
 <?php
-	$title = 'register';
-	include './include/header.html';
-    include './include/connection.php';
+    include './phpScripts/connection.php';
 
 // BODY START 
 // 1.Chek if user is already login, check the cookie
@@ -41,7 +39,8 @@
 			//connect to the database
 			//check if loginName and email is already exist in database
 
-			$sql = 'SELECT COUNT(*) as cnt FROM users WHERE user_name="'.addslashes($username).'"OR email="'.addslashes($email).'"';
+			$sql = 'SELECT COUNT(*) as cnt FROM users WHERE user_name="'.mysqli_real_escape_string($connection, $username).
+                '"OR email="'.mysqli_real_escape_string($connection, $email).'"';
 			$query = mysqli_query($connection, $sql);
 			$row =mysqli_fetch_assoc($query);
 
@@ -51,14 +50,13 @@
                     mysqli_real_escape_string($connection, $username) . '","' .
                     md5($password) . '","' .
                     mysqli_real_escape_string($connection, $email).'")';
-                echo $sql;
 
                 mysqli_query($connection, $sql);
 				if (mysqli_error($connection)) {
 					echo "<h1>Error</h1>";
 					echo mysqli_error($connection);
 				} else {
-                    echo '<p>You have registered successfully!</p>';
+                    echo '<div id="success">You have registered successfully!</p>';
 				}
 			} else {
 				echo '<div id="error">User Name or Email already exists</div>';

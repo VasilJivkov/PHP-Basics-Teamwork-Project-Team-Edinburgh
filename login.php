@@ -2,10 +2,15 @@
 <html>
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<script src="js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
+    <?php
+        if ($_SESSION['is_logged'] === true) {
+            die('You are already logged in.');
+        }
+    ?>
 	
 	<div id="login-container">
 		<h3 id="title">Title of the forum here</h3>

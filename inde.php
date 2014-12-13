@@ -1,6 +1,6 @@
 <?php 
 	$title = 'index';
-	include './include/header.html';
+	include './phpScripts/header.html';
  ?>
 
  <!-- BODY START -->
@@ -16,5 +16,5 @@
  <!-- BODY END -->
 
 <?php 
-	include './include/footer.html';
+	include './phpScripts/footer.html';
 ?>
