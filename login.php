@@ -7,6 +7,8 @@
 </head>
 <body>
     <?php
+        session_start();
+        $_SESSION['is_logged'] = false;
         if ($_SESSION['is_logged'] === true) {
             die('You are already logged in.');
         }
