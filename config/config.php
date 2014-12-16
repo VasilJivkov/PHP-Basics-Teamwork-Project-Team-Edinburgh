@@ -6,3 +6,10 @@ define( 'DB_USER', 'root' );
 define( 'DB_PASS', '' );
 define( 'DB_NAME', 'forum' );
 define( 'DB_HOST', 'localhost' );
+
+
+//add controls for Nikola Pravetc workstation
+// define( 'DB_USER', 'root' );
+// define( 'DB_PASS', 'dragoman' );
+// define( 'DB_NAME', 'forum' );
+// define( 'DB_HOST', 'localhost' );
