@@ -21,6 +21,10 @@ class DB {
 
     public function query( $sql ) {
         mysqli_query( self::$conn, $sql );
+        if (mysqli_error(self::$conn)) {
+            echo '<p>Error in database</p>';
+            die();
+        }
     }
 
     public function escape( $str ) {

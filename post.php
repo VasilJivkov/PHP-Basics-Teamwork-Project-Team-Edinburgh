@@ -1,7 +1,7 @@
 <?php
 
 if (empty($_GET['post'])) {
-    header('location:inde.php');
+    header('location:index.php');
 }
 
 require_once 'config/config.php';

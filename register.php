@@ -1,10 +1,12 @@
 <?php
-    include './phpScripts/connection.php';
 
 // BODY START 
 // 1.Chek if user is already login, check the cookie
-	$_SESSION['is_logged'] = false;
-	if ($_SESSION['is_logged'] === false) {
+    session_start();
+
+	if ($_SESSION['loggedIn'] == false) {
+        include './config/config.php';
+        include './lib/database.php';
 ?>
 
 <?php
@@ -14,57 +16,53 @@
 		isset($_POST['repeat-password']) &&
 		isset($_POST['email'])) {
 		//put the information into variables
-			$username = trim($_POST['username']);
-			$password = trim($_POST['password']);
-			$passwordRepeat = trim($_POST['repeat-password']);
-			$email = trim($_POST['email']);
+			$username = htmlspecialchars($_POST['username']);
+			$password = htmlspecialchars($_POST['password']);
+			$passwordRepeat = htmlspecialchars($_POST['repeat-password']);
+			$email = htmlspecialchars($_POST['email']);
 			// validation of the input
 			if (strlen($username) < 4 || strlen($username > 30)) {
-				echo '<div id="error">Invalid Username</div>';
-                return;
+                header('location:loginPage.php?error=Invalid+Username');
 			}
 			if (strlen($password) < 4) {
-                echo '<div id="error">The password is too short</div>';
-                return;
+                header('location:loginPage.php?error=The+password+is+too+short');
 			}
 			if ($password != $passwordRepeat) {
-                echo '<div id="error">The passwords doesn\'t match</div>';
-                return;
+                header('location:loginPage.php?error=The+passwords+don\'t+match');
 			}
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo '<div id="error">Invalid email</div>';
-                return;
+                header('location:loginPage.php?error=Invalid+email');
 			}
 
 			//connect to the database
+            $db = new DB();
+
 			//check if loginName and email is already exist in database
 
-			$sql = 'SELECT COUNT(*) as cnt FROM users WHERE user_name="'.mysqli_real_escape_string($connection, $username).
-                '"OR email="'.mysqli_real_escape_string($connection, $email).'"';
-			$query = mysqli_query($connection, $sql);
-			$row =mysqli_fetch_assoc($query);
+
+
+			$sql = 'SELECT * FROM users WHERE user_name="'.$db->escape($username).
+                '"OR email="'.$db->escape($email).'"';
+
+            $result = $db->get_results($sql);
 
 			// if user doesn't exist put info into database
-			if ($row['cnt'] == 0) {
+			if (count($result) == 0) {
                 $sql = 'INSERT INTO users (user_id,user_name,password,email) VALUES ("","' .
-                    mysqli_real_escape_string($connection, $username) . '","' .
+                    $db->escape($username) . '","' .
                     md5($password) . '","' .
-                    mysqli_real_escape_string($connection, $email).'")';
+                    $db->escape($email).'")';
 
-                mysqli_query($connection, $sql);
-				if (mysqli_error($connection)) {
-					echo "<h1>Error</h1>";
-					echo mysqli_error($connection);
-				} else {
-                    echo '<div id="success">You have registered successfully!</p>';
-				}
+                $db->query($sql);
+
+                header('location:loginPage.php?success=You+have+registered+successfully');
 			} else {
-				echo '<div id="error">User Name or Email already exists</div>';
+                header('location:loginPage.php?error=Username+or+Email+already+exists');
 			}
 
 		}
 } else {
-	echo '<div id="error">You are already logged in.</div>';
+	header('location:index.php');
 }
 ?>
 
