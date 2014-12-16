@@ -72,6 +72,26 @@ if (!empty($_POST['heading']) &&
     $content = htmlspecialchars($_POST['content']);
     $category = htmlspecialchars($_POST['category']);
     // AUTHOR!
+    //start validation of the new post input
+    if (strlen($heading) < 4) {
+    	echo '<div class="newPostForumError">The heading is too small</div>';
+    	return;
+    }
+    if (strlen($heading) > 100) {
+    	echo '<div class="newPostForumError">The heading is too small</div>';
+    	return;
+    }
+    if (strlen($content) < 5) {
+    	echo '<div class="newPostForumError">The content is too small</div>';
+    	return;
+    }
+    if (strlen($content) > 1000) {
+    	echo '<div class="newPostForumError">The content is too big</div>';
+    	return;
+    }
+    //end validation of the new post input
+
+
     $sql = 'INSERT INTO posts (heading, author, content, category, date) VALUES ("' . $db->escape($heading) . '", "'.
         $db->escape($_SESSION['username']).'",
         "' .$db->escape($content). '", "' .$db->escape($category). '", "'.date_format(new DateTime(), 'd-m-Y').'")';
