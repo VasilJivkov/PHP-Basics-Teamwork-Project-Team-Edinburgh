@@ -71,24 +71,31 @@ if (!empty($_POST['heading']) &&
     $heading = htmlspecialchars($_POST['heading']);
     $content = htmlspecialchars($_POST['content']);
     $category = htmlspecialchars($_POST['category']);
-    // AUTHOR!
     //start validation of the new post input
     if (strlen($heading) < 4) {
-    	echo '<div class="newPostForumError">The heading is too small</div>';
+    	echo '<div class="newPostForumError">The heading is too short</div>';
     	return;
     }
     if (strlen($heading) > 100) {
-    	echo '<div class="newPostForumError">The heading is too small</div>';
+    	echo '<div class="newPostForumError">The heading is too long</div>';
     	return;
     }
     if (strlen($content) < 5) {
-    	echo '<div class="newPostForumError">The content is too small</div>';
+    	echo '<div class="newPostForumError">The content is too short</div>';
     	return;
     }
     if (strlen($content) > 1000) {
-    	echo '<div class="newPostForumError">The content is too big</div>';
+    	echo '<div class="newPostForumError">The content is too long</div>';
     	return;
     }
+	
+	$sql = 'SELECT * FROM categories WHERE Type=\''.$category.'\'';
+	$result = $db->get_results($sql);
+	if (count($result) == 0) {
+		echo '<div class="newPostForumError">There is no such category</div>';
+    	return;
+	}
+	
     //end validation of the new post input
 
 
