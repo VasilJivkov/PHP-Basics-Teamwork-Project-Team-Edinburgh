@@ -50,6 +50,7 @@ require_once 'config/config.php';
             session_start();
             if (empty($_SESSION['loggedIn'])) {
                 echo '<button onclick="location.href=\'loginPage.php\'">Login</button>';
+                echo '<button onclick="location.href=\'loginPage.php\'">Register</button>';
             } else {
                 echo '<button onclick="location.href=\'logout.php\'">Logout</button>';
             }
