@@ -13,6 +13,14 @@ require_once 'config/config.php';
     <script src="js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
+<!-- add header -->
+<header id="mainHeader">
+<div>
+    <img src="./pics/777.jpg" alt="">
+    <p>Where your ulimit is unlimited</p>
+</div>
+</header>
+<!-- end add header -->
 <div id="main-container">
     <div id="left">
         <section>
