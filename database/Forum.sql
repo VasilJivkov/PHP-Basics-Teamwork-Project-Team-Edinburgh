@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2014 at 01:18 PM
+-- Generation Time: Dec 17, 2014 at 08:20 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -48,11 +48,11 @@ INSERT INTO `categories` (`Type`) VALUES
 
 CREATE TABLE IF NOT EXISTS `comments` (
 `comment_id` int(11) NOT NULL,
-  `post_related` int(255) NOT NULL,
-  `author` varchar(50) NOT NULL,
+  `post_related` varchar(100) NOT NULL,
+  `author` varchar(100) NOT NULL,
   `content` text NOT NULL,
-  `date` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `date` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comments`
@@ -70,8 +70,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `author` varchar(50) NOT NULL,
   `content` text NOT NULL,
   `category` varchar(50) NOT NULL,
-  `date` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `date` varchar(20) NOT NULL,
+  `visits` int(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
@@ -124,12 +125,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `users`
 --

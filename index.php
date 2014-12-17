@@ -84,6 +84,7 @@ require_once 'config/config.php';
 
             <article>
                 <h2><a href="./post.php?post=<?php echo $post->post_id ?>"><?php echo $post->heading ?></a></h2>
+                <h3>Visits: <?php echo $post->visits ?></h3>
                 <em>posted by <?php echo $post->author ?> on <?php echo $post->date ?> in
                     <a href="<?php echo 'index.php?category=' . $post->category ?>"><?php echo $post->category ?></a></em>
             </article>
