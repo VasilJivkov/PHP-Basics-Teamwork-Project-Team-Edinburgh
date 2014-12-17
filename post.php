@@ -63,29 +63,43 @@ $result = $db->get_results($sql);
                 echo '<button onclick="location.href=\'loginPage.php\'">Login | Register</button>';
             } else {
                 echo '<button onclick="location.href=\'logout.php\'">Logout</button>';
+                //show username on top right
+                echo '<p id=showUsername>'.'Logged in as <strong>' . $_SESSION['username'] .'</strong></p>';
             }
             ?>
         </div>
         <article>
 			<h1><a href="#"><?php echo $result[0]->heading ?></a></h1>
-			<em>posted by <?php echo $result[0]->author ?> on <?php echo $result[0]->date ?> in
+			<em>posted by <span class="user"><?php echo $result[0]->author ?></span> on <?php echo $result[0]->date ?> in
 				<?php echo '<a href="index.php?category='.$result[0]->category.'">'.$result[0]->category.'</a>' ?></em>
 			<p id="content"><?php echo $result[0]->content ?></p>
 			</article>
         <form method="post" action="" id="add-comment">
 
         <h3>Responses</h3>
-		<article class="comment">
-			<em>replied by <a href="javascript:;">Administrator</a> on 14.12.2014 13:14</em>
-			<p>Here goes the comment</p>
-		</article>
-		<article class="comment">
-			<em>replied by <a href="javascript:;">Administrator</a> on 14.12.2014 13:14</em>
-			<p>Here goes another comment</p>
-		</article>
+        <?php
+
+        $sql = "SELECT * FROM comments WHERE post_related='" . $result[0]->post_id . "'";
+
+        $responses = $db->get_results($sql);
+
+
+        if (count($responses) == 0) {
+            echo '<div>No responses yet</div>';
+        } else {
+            foreach ($responses as $response) { ?>
+                <article class="comment">
+                    <em>replied by <span class="user"><?php echo $response->author ?></span> on <?php echo $response->date ?></em>
+                    <p><?php echo $response->content ?></p>
+                </article>
+            <?php
+            }
+
+        }
+        ?>
 
         <form id="add-comment">
-			<h3>Add comment</h3>
+			<h3>Add a new response</h3>
 			<textarea rows="8" name="comment"></textarea>
 			<button type="submit">Add comment</button>
 		</form>
@@ -109,6 +123,7 @@ $result = $db->get_results($sql);
 
                 $db->query($sql);
                 echo '<div id="success"> You have commented the post successfully</div>';
+                header('location:#');
 
             } else {
                 echo '<div id="error"> You must be logged in in order to post a comment</div>';

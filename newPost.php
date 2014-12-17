@@ -6,7 +6,7 @@ require_once './lib/database.php';
 
 session_start();
 if ($_SESSION['loggedIn'] == false) {
-    die('You must be logged in order to create a new post.');
+    header('location:loginPage.php');
 }
 ?>
 

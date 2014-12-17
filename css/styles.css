@@ -235,3 +235,14 @@ input[type="submit"] {
 #add-comment > h3 {
 	color: #4db3a5;
 }
+
+.user {
+    color: #4db3a5;
+}
+
+.comment {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
