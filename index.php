@@ -52,7 +52,10 @@ require_once 'config/config.php';
                 echo '<button onclick="location.href=\'loginPage.php\'">Login | Register</button>';
             } else {
                 echo '<button onclick="location.href=\'logout.php\'">Logout</button>';
+                  //show username on top right
+                echo '<p id=showUsername>'.'Logged in as <strong>' . $_SESSION['username'] .'</strong></p>';
             }
+          
             ?>
         </div>
         <?php
