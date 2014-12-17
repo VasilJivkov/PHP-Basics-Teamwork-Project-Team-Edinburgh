@@ -14,6 +14,10 @@ $db = new DB();
 $sql = "SELECT * FROM posts WHERE post_id=" . $post_id;
 $result = $db->get_results($sql);
 
+if (empty($result[0])) {
+    die('Error in database.');
+}
+
 $visitsCount = (int)$result[0]->visits + 1;
 $sql = "UPDATE posts SET visits='". $visitsCount ."' WHERE post_id='" . $post_id . "'";
 $db->query($sql);
