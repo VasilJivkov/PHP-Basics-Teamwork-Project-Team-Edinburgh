@@ -23,7 +23,6 @@ $result = $db->get_results($sql);
     <script src="js/jquery-2.1.1.min.js"></script>
 
 </head>
-
 <body>
 <div id="main-container">
     <div id="left">
@@ -68,12 +67,24 @@ $result = $db->get_results($sql);
             ?>
         </div>
         <article>
-				<header><a href="#"><?php echo $result[0]->heading ?></a></header>
-				<em>posted by <?php echo $result[0]->author ?> on <?php echo $result[0]->date ?> in
-                    <?php echo '<a href="index.php?category='.$result[0]->category.'">'.$result[0]->category.'</a>' ?></em>
-				<p id="content"><?php echo $result[0]->content ?></p>
+			<h1><a href="#"><?php echo $result[0]->heading ?></a></h1>
+			<em>posted by <?php echo $result[0]->author ?> on <?php echo $result[0]->date ?> in
+				<?php echo '<a href="index.php?category='.$result[0]->category.'">'.$result[0]->category.'</a>' ?></em>
+			<p id="content"><?php echo $result[0]->content ?></p>
 			</article>
         <form method="post" action="" id="add-comment">
+
+        <h3>Responses</h3>
+		<article class="comment">
+			<em>replied by <a href="javascript:;">Administrator</a> on 14.12.2014 13:14</em>
+			<p>Here goes the comment</p>
+		</article>
+		<article class="comment">
+			<em>replied by <a href="javascript:;">Administrator</a> on 14.12.2014 13:14</em>
+			<p>Here goes another comment</p>
+		</article>
+
+        <form id="add-comment">
 			<h3>Add comment</h3>
 			<textarea rows="8" name="comment"></textarea>
 			<button type="submit">Add comment</button>

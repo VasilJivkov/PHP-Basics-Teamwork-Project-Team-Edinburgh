@@ -98,6 +98,9 @@ textarea {
 	padding: 20px;
 	margin-top: 10px;
 }
+#right > article.comment {
+	background-color: #fff;
+}
 #right > article > header  {
 	font-size: 18px;
 	font-weight: normal;
