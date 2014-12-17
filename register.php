@@ -23,15 +23,19 @@
 			// validation of the input
 			if (strlen($username) < 4 || strlen($username > 30)) {
                 header('location:loginPage.php?error=Invalid+Username');
+				return;
 			}
 			if (strlen($password) < 4) {
                 header('location:loginPage.php?error=The+password+is+too+short');
+				return;
 			}
 			if ($password != $passwordRepeat) {
                 header('location:loginPage.php?error=The+passwords+don\'t+match');
+				return;
 			}
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 header('location:loginPage.php?error=Invalid+email');
+				return;
 			}
 
 			//connect to the database
