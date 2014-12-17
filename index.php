@@ -63,7 +63,7 @@ require_once 'config/config.php';
             } else {
                 echo '<button onclick="location.href=\'logout.php\'">Logout</button>';
                   //show username on top right
-                echo '<p id=showUsername>'.'Logged in as <strong>' . $_SESSION['username'] .'</strong></p>';
+                echo '<p id=showUsername>'.'Logged in as <span>' . $_SESSION['username'] .'</span></p>';
             }
           
             ?>
