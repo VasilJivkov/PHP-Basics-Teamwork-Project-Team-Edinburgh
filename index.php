@@ -15,16 +15,18 @@ require_once 'config/config.php';
 <body>
 <!-- add header -->
 <header id="mainHeader">
-<div>
-    <img src="./pics/777.jpg" alt="">
-    <p>Where your ulimit is unlimited</p>
-</div>
+    <div>
+        <a href="index.php" id="innerHeaderDiv">
+            <h1>chmod 777</h1>
+            <h3>Where your ulimit is unlimited</h3>
+        </a>
+    </div>
 </header>
 <!-- end add header -->
 <div id="main-container">
     <div id="left">
         <section>
-            <header><h3>Menu</h3></header>
+            <div class="menu"><h3>Menu</h3></div>
             <ul>
                 <li>
                     <a href="index.php">Home</a>
@@ -32,7 +34,7 @@ require_once 'config/config.php';
             </ul>
         </section>
         <section>
-            <header><h3>Categories</h3></header>
+            <div class="menu"><h3>Categories</h3></div>
             <ul>
                 <li>
                     <?php
@@ -81,7 +83,7 @@ require_once 'config/config.php';
         foreach ($result as $post) { ?>
 
             <article>
-                <header><a href="./post.php?post=<?php echo $post->post_id ?>"><?php echo $post->heading ?></a></header>
+                <h2><a href="./post.php?post=<?php echo $post->post_id ?>"><?php echo $post->heading ?></a></h2>
                 <em>posted by <?php echo $post->author ?> on <?php echo $post->date ?> in
                     <a href="<?php echo 'index.php?category=' . $post->category ?>"><?php echo $post->category ?></a></em>
             </article>
@@ -90,16 +92,14 @@ require_once 'config/config.php';
         }
         ?>
     </div>
-    <footer>
-        <em>&copy; Team Edinburgh & SoftUni</em>
-        <div id="badges">
-             <a href="https://github.com/mihayloff/PHP-Basics-Teamwork-Project-Team-Edinburgh" title="Team GitHub">
-                <img src="./pics/GitHub.png" alt="">
-             </a>
-               <img src="./pics/HTML5.png" alt="">
-               <img src="./pics/CSS3.png" alt="">
-        </div>
-    </footer>
 </div>
+<footer>
+	<em>&copy; Team Edinburgh @ <a href="https://softuni.bg">Software University</a></em>
+	<div id="badges">
+		 <a href="https://github.com/mihayloff/PHP-Basics-Teamwork-Project-Team-Edinburgh" title="Team GitHub">
+			<img src="./pics/GitHub.png" alt="">
+		 </a>
+	</div>
+</footer>
 </body>
 </html>

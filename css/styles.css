@@ -21,6 +21,14 @@ a {
     padding: 10px;
 }
 
+h2 {
+    margin-top: 0;
+}
+
+header {
+    margin-top: -20px;
+}
+
 button {
 	color: #fff;
 	background-color: #364150;
@@ -253,7 +261,7 @@ input[type="submit"] {
 
 
 
-/*footer by nikola*/
+/*footer by nikola */
 footer div {
 	float: right;
 }
@@ -267,7 +275,6 @@ footer div img:hover {
 	border: 1px solid white;
 }
 footer {
-	position: fixed;
 	bottom: 10px;
 	left: 0;
 	right: 0;
@@ -280,20 +287,25 @@ footer {
 	left: 0;
 	right: 0;
 	background-color: #ECEEF1;
-	height: 40px;
 	text-align: left;
 	color: #364150;
 	font-size: 15px;
 	font-style: italic;
-} 
-#mainHeader img {
-height: 60px;
-width: 200px;
 }
+
 #mainHeader div{
-	top: 10px;
-	left: 0;
-	right: 0;
+    text-align: center;
 	background-color: #ECEEF1;
 	padding-bottom: 1px;
+}
+
+#mainHeader h1 {
+    padding-top: 10px;
+}
+
+#innerHeaderDiv {
+    display: inline-block;
+    background: #364150;
+    width: 300px;
+    cursor: pointer;
 }

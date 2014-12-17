@@ -18,10 +18,18 @@ if ($_SESSION['loggedIn'] == false) {
 	<script src="js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
+    <header id="mainHeader">
+        <div>
+            <a href="index.php" id="innerHeaderDiv">
+                <h1>chmod 777</h1>
+                <h3>Where your ulimit is unlimited</h3>
+            </a>
+        </div>
+    </header>
 	<div id="main-container">
 		<div id="left">
 			<section>
-				<header><h3>Menu</h3></header>
+				<div><h3>Menu</h3></div>
 				<ul>
 					<li>
 						<a href="index.php">Home</a>
@@ -31,7 +39,7 @@ if ($_SESSION['loggedIn'] == false) {
 		</div>
 		<div id="right">
 			<section>
-				<header><h3>New post:</h3></header>
+				<div><h3>New post:</h3></div>
 				<form action="" method="post">
 					<label>Heading</label>
 					<input type="text" name="heading" />
@@ -56,10 +64,15 @@ if ($_SESSION['loggedIn'] == false) {
 				</form>
 			</section>
 		</div>
-		<footer>
-			<em>&copy; Team Edinburgh & SoftUni</em>
-		</footer>
 	</div>
+    <footer>
+        <em>&copy; Team Edinburgh @ <a href="https://softuni.bg">Software University</a></em>
+        <div id="badges">
+            <a href="https://github.com/mihayloff/PHP-Basics-Teamwork-Project-Team-Edinburgh" title="Team GitHub">
+                <img src="./pics/GitHub.png" alt="">
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
 

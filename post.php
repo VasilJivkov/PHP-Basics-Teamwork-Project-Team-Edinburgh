@@ -24,10 +24,18 @@ $result = $db->get_results($sql);
 
 </head>
 <body>
+<header id="mainHeader">
+    <div>
+        <a href="index.php" id="innerHeaderDiv">
+            <h1>chmod 777</h1>
+            <h3>Where your ulimit is unlimited</h3>
+        </a>
+    </div>
+</header>
 <div id="main-container">
     <div id="left">
         <section>
-            <header><h3>Menu</h3></header>
+            <div><h3>Menu</h3></div>
             <ul>
                 <li>
                     <a href="index.php">Home</a>
@@ -35,7 +43,7 @@ $result = $db->get_results($sql);
             </ul>
         </section>
         <section>
-            <header><h3>Categories</h3></header>
+            <div><h3>Categories</h3></div>
             <ul>
                 <li>
                     <?php
@@ -132,6 +140,15 @@ $result = $db->get_results($sql);
 
         ?>
     </div>
+</div>
+    <footer>
+        <em>&copy; Team Edinburgh @ <a href="https://softuni.bg">Software University</a></em>
+        <div id="badges">
+            <a href="https://github.com/mihayloff/PHP-Basics-Teamwork-Project-Team-Edinburgh" title="Team GitHub">
+                <img src="./pics/GitHub.png" alt="">
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
 

@@ -6,6 +6,14 @@
 	<script src="js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
+<header id="mainHeader">
+    <div>
+        <a href="index.php" id="innerHeaderDiv">
+            <h1>chmod 777</h1>
+            <h3>Where your ulimit is unlimited</h3>
+        </a>
+    </div>
+</header>
     <?php
         session_start();
         if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
@@ -14,8 +22,7 @@
     ?>
 	
 	<div id="login-container">
-        <button onclick="location.href='index.php'">Home</button>
-		<h3 id="title">Title of the forum here</h3>
+		<h3 id="title">Join the clan</h3>
 		<div class="login-container-main" id="login">
 			<h3>Sign in</h3>
 			<form action="login.php" method="post">
