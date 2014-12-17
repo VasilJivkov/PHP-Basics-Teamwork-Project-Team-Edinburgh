@@ -68,20 +68,43 @@ $result = $db->get_results($sql);
             ?>
         </div>
         <article>
-				<header><a href="javascript:;">Problem with Visual Studio, C#</a></header>
-				<em>posted by <a href="javascript:;">Administrator</a> on 14.12.2014 in <a href="javascript:;">C#</a></em>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<header><a href="#"><?php echo $result[0]->heading ?></a></header>
+				<em>posted by <?php echo $result[0]->author ?> on <?php echo $result[0]->date ?> in
+                    <?php echo '<a href="index.php?category='.$result[0]->category.'">'.$result[0]->category.'</a>' ?></em>
+				<p id="content"><?php echo $result[0]->content ?></p>
 			</article>
-        <form id="add-comment">
+        <form method="post" action="" id="add-comment">
 			<h3>Add comment</h3>
-			<textarea rows="8"></textarea>
+			<textarea rows="8" name="comment"></textarea>
 			<button type="submit">Add comment</button>
 		</form>
+        <?php
+        if (isset($_POST['comment']) && !empty($_POST['comment'])) {
+
+            if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+                $comment = htmlspecialchars($_POST['comment']);
+                $username = htmlspecialchars($_SESSION['username']);
+
+                if (strlen($comment) < 4) {
+                    echo '<div id="error"> The comment is too short</div>';
+                    return;
+                } elseif (strlen($comment) > 1000) {
+                    echo '<div id="error"> The comment is too long</div>';
+                    return;
+                }
+
+                $sql = "INSERT INTO comments (post_related, author, content, date) VALUES ('" . $result[0]->post_id . "','" .
+                   $db->escape($username) . "','" . $db->escape($comment) . "','" . date_format(new DateTime(), 'd-m-Y') . "'" . ")";
+
+                $db->query($sql);
+                echo '<div id="success"> You have commented the post successfully</div>';
+
+            } else {
+                echo '<div id="error"> You must be logged in in order to post a comment</div>';
+            }
+        }
+
+        ?>
     </div>
 </body>
 </html>
