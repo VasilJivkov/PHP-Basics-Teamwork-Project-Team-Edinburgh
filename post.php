@@ -13,14 +13,16 @@ $db = new DB();
 
 $sql = "SELECT * FROM posts WHERE post_id=" . $post_id;
 $result = $db->get_results($sql);
-
-$title = $result[0]->heading;
-$style = 'post.css';
-
-include './phpScripts/header.php';
-
-// body start
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?php echo $result[0]->heading ?></title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="js/jquery-2.1.1.min.js"></script>
+
+</head>
 
 <body>
 <div id="main-container">
@@ -66,14 +68,8 @@ include './phpScripts/header.php';
             ?>
         </div>
         <article>
-            <header><a href="./post.php?post=<?php echo $post->post_id ?>"><?php echo $result[0]->heading ?></a></header>
-            <em>posted by <?php echo $result[0]->author ?> on <?php echo $result[0]->date ?> in
-                <a href="<?php echo 'index.php?category=' . $post->category ?>"><?php echo $result[0]->category ?></a></em>
-                <p><?php echo $result[0]->content ?></p>
         </article>
     </div>
-<?php
-// body end
-
-include './phpScripts/footer.html';
+</body>
+</html>
 
