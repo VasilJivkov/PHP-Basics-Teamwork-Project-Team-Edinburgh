@@ -84,6 +84,13 @@ require_once 'config/config.php';
     </div>
     <footer>
         <em>&copy; Team Edinburgh & SoftUni</em>
+        <div id="badges">
+             <a href="https://github.com/mihayloff/PHP-Basics-Teamwork-Project-Team-Edinburgh" title="Team GitHub">
+                <img src="./pics/GitHub.png" alt="">
+             </a>
+               <img src="./pics/HTML5.png" alt="">
+               <img src="./pics/CSS3.png" alt="">
+        </div>
     </footer>
 </div>
 </body>
