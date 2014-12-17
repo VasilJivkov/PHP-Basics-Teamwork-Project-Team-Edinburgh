@@ -69,11 +69,11 @@ $result = $db->get_results($sql);
         </div>
         <article>
         </article>
-        <div id="add-comment">
+        <form id="add-comment">
 			<h3>Add comment</h3>
 			<textarea rows="8"></textarea>
-			<button>Add comment</button>
-		</div>
+			<button type="submit">Add comment</button>
+		</form>
     </div>
 </body>
 </html>
