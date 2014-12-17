@@ -65,14 +65,6 @@ if ($_SESSION['loggedIn'] == false) {
 			</section>
 		</div>
 	</div>
-    <footer>
-        <em>&copy; Team Edinburgh @ <a href="https://softuni.bg">Software University</a></em>
-        <div id="badges">
-            <a href="https://github.com/mihayloff/PHP-Basics-Teamwork-Project-Team-Edinburgh" title="Team GitHub">
-                <img src="./pics/GitHub.png" alt="">
-            </a>
-        </div>
-    </footer>
 </body>
 </html>
 
